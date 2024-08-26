@@ -1,4 +1,3 @@
-import axios from "axios";
 import { Fragment, useEffect, useState } from "react"
 import { Container, Flag } from "semantic-ui-react";
 import { Activity } from "../models/activity";
@@ -7,8 +6,10 @@ import ActivityDashboard from "../../features/activities/dashboard/ActivityDashb
 import { v4 as uuid } from "uuid";
 import agent from "../api/agent";
 import LoadingComponent from "./LodingComponent";
+import { useStore } from "../stores/store";
 
 function App() {
+  const { activityStore } = useStore();
   const [activities, setActivities] = useState<Activity[]>([]);
   const [selectedActivity, setSelectedActivity] = useState<Activity | undefined>(undefined);
   const [editMode, setEditMode] = useState(false);
